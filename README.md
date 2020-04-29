@@ -1,7 +1,8 @@
 # Spring Boot JPA Online shop example 
 
 ## 모델링 
-
+![](https://user-images.githubusercontent.com/28615416/80606188-f9311300-8a6e-11ea-8bd0-5978c60d9128.png)
+![](https://user-images.githubusercontent.com/28615416/80606200-fd5d3080-8a6e-11ea-938c-db9ca1084f3f.png)
 
 
 ## 연관관계 1:N 
