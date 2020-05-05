@@ -138,3 +138,17 @@ public class Order {
 
 
 
+
+
+
+
+jpql
+
+-   JPQL은 SQL과 거의 비슷, JPQL을 SQL로 바꾼다. 
+-   SQL 이 테이블을 기준으로 조회하는 거면, JPQL은 엔티티를 기준으로 조회한다.
+
+persist
+
+-   em.persist(member)의 의미? 
+    -   영속성 컨텍스트에 member엔티티를 넣는다.
+    -   transction이 commit 되는 시점에 DB에 insert 쿼리가 날아간다.
