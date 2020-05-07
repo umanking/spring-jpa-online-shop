@@ -67,10 +67,6 @@ Address 같은 값 객체는 값이기 때문에 변경되면 안되고, Immutab
 ## JPA spec
 - jpa는 reflection이나 proxy를 이용해서 객체를 생성하기 때문에, 기본생성자가 없다면 빨간줄이 뜬다.
 
-
-
-
-
 ## 엔티티 설계시 주의사항
 
 -   setter를 사용하지 않는다. 
@@ -117,9 +113,6 @@ public class Order {
 ```
 
 
-
-
-
 ## 개발하는 순서 
 
 -   애플리케이션 요구사항 분석 
@@ -152,3 +145,13 @@ persist
 -   em.persist(member)의 의미? 
     -   영속성 컨텍스트에 member엔티티를 넣는다.
     -   transction이 commit 되는 시점에 DB에 insert 쿼리가 날아간다.
+    
+    
+## 테스트
+JPA와 연동하는 통합테스트 작성시.... 
+테스트 클래스에 @Transactional (스프링) 어노테이션을 붙이면, 기본 rollback을 true로 한다. 이 말인즉슨, JPA에서 굳이 insert 하는 쿼리를 직접 날릴 필요가 없다.
+그렇기 때문에 SQL문을 보면, Insert 쿼리가 없고, select 쿼리만 존재한다.
+
+그렇다면 실제 INSERT 쿼리까지 직접확인 하고 싶다면
+1. 메서드위에 @Rollback(false) 옵션을 주는 것 
+2. EntityManager를 통해서 엔티티를 save 한 후에 em.flush()메서드를 직접 호출한다.
