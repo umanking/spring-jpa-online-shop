@@ -1,10 +1,10 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -12,9 +12,9 @@ import java.util.List;
  * @since 2020-05-05
  */
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
     private EntityManager em;
 
     public void save(Member member) {
