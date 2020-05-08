@@ -160,5 +160,23 @@ JPA와 연동하는 통합테스트 작성시....
 Item 클래스를 살펴보면, 보통 재고 수량을 넣고, 빼는식의 동작은 ItemService 에서 수량정보들을 가지고 와서, 계산하고, setStockQuantity를 통해서 변경된(계산된) 데이터 값을 셋팅한다. 
 이렇게 하는 것이 아니라, 비즈니스 로직은 (해당 데이터를 가지고 있는 클래스) 내에서 동작하는 것이 좋다. 
 
-> 🤔 그러면 Repository(infrastrcuture layer) 를 통해서 DB정보를 가져오는건 어떻게 처리할까?   
-> 가지고 온 데이터를 파라미터로 전달해서 해결할 수 있다.? 
+> 🤔 그러면 Repository(infrastrcuture layer) 를 통해서 DB정보를 가져오는건 어떻게 처리할까?
+
+## 엔티티클래스의 기본 생성자 AccessLevel 설정하기
+```java
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Order {
+
+}
+```
+저게 의미하는 바? Order 엔티티의 생성메서드(createOrder)를 만든다. 외부에서 Order 객체를 만들때, 우리가 만든 생성메서드를 사용하기를 원한다. 그렇지 않고 누군가 `new Order()`를 통해서 setter를 통해서 만든다면 
+여기저기 코드의 일관성도 없고, 유지보수하기 힘들다. 그럼 기본 생성자를 public이 아닌 protected 로 설정하게 되면 JPA 스펙에서 허용해준다. 또한, OrderService에서 `new Order()`를 만드는 순간 컴파일 타임에
+알려준다. 
+```java
+public class Order {
+   
+    protected Order(){
+    }
+}
+``` 
+저 protected 레벨의 기본 생성자를 롬복 어노테이션으로 똑같이 만들 수 있다. `@NoArgsConstructor(access = AccessLevel.PROTECTED)` 이렇게 
