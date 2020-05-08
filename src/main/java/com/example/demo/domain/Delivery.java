@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.type.DeliveryStatus;
 import lombok.Getter;
 import lombok.Setter;
 
