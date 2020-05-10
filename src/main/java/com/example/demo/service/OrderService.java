@@ -1,13 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Delivery;
-import com.example.demo.domain.Member;
-import com.example.demo.domain.Order;
-import com.example.demo.domain.OrderItem;
+import com.example.demo.domain.*;
 import com.example.demo.domain.item.Item;
-import com.example.demo.repository.ItemRepository;
-import com.example.demo.repository.MemberRepository;
-import com.example.demo.repository.OrderRepository;
+import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +44,15 @@ public class OrderService {
         return order.getId();
     }
 
-    // 취소
+    // 주문 취소
+    @Transactional
+    public void cancelOrder(Long orderId) {
+        Order order = orderRepository.findOne(orderId);
+        order.cancel();
+    }
 
     // 검색
+//    public List<Order> findOrders(OrderSearch orderSearch) {
+//        return orderRepository.findAll(orderSearch);
+//    }
 }

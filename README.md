@@ -179,4 +179,7 @@ public class Order {
     }
 }
 ``` 
-저 protected 레벨의 기본 생성자를 롬복 어노테이션으로 똑같이 만들 수 있다. `@NoArgsConstructor(access = AccessLevel.PROTECTED)` 이렇게 
+저 protected 레벨의 기본 생성자를 롬복 어노테이션으로 똑같이 만들 수 있다. `@NoArgsConstructor(access = AccessLevel.PROTECTED)` 이렇게
+
+> 도메인 모델 패턴: 서비스 계층은 단순히 엔티티의 필요한 요청을 위임하는 역할을 한다. 엔티티가 비즈니스 로직을 갖고 객체지향 특성을 적극 활용하는 것을 도메인 모델 패턴이라고 한다. 
+> 트랜잭션 스크립트 패턴: 기존에 우리가 알던, 서비스 계층에서 비즈니스 로직을 다루는 패턴 
