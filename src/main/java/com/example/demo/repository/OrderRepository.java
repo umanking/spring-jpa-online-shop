@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * @author Geonguk Han
@@ -25,7 +26,12 @@ public class OrderRepository {
     }
 
     // todo: 검색조건 동적 쿼리로 작성
-    /*public List<Order> findAll(OrderSearch orderSearch) {
+    public List<Order> findAll(OrderSearch orderSearch) {
+        return em.createQuery("select o from Order o join o.member m " +
+                "where o.orderStatus = :orderStatus and m.name like :memberName", Order.class)
+                .setParameter("orderStatus", orderSearch.getOrderStatus())
+                .setParameter("memberName", orderSearch.getMemberName())
+                .getResultList();
 
-    }*/
+    }
 }
