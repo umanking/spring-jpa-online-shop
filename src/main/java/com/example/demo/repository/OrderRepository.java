@@ -4,6 +4,7 @@ import com.example.demo.domain.Order;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author Geonguk Han
@@ -12,6 +13,7 @@ import javax.persistence.EntityManager;
 @Repository
 public class OrderRepository {
 
+    @PersistenceContext
     private EntityManager em;
 
     public void save(Order order) {
